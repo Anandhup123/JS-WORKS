@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Element in Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            border-radius: 4px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #003d80;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Element in Array</h1>
+        <input type="number" id="searchValue" placeholder="Enter value to search">
+        <button onclick="search()">Search</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function search() {
+            const array = [10, 25, 5, 8, 30, 15];
+            const target = document.getElementById('searchValue').value;
+            let found = false;
+            let position = -1;
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] == target) {
+                    found = true;
+                    position = i;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            if (found) {
+                resultDiv.innerText = `The element ${target} was found at position ${position + 1} (index ${position}).`;
+            } else {
+                resultDiv.innerText = `The element ${target} was not found in the array.`;
+            }
+        }
+    </script>
+</body>
+</html>
