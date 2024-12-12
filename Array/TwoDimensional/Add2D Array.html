@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Array Sum Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .array-display {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            border-radius: 4px;
+            text-align: left;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #003d80;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2D Array Sum Example</h1>
+        <div id="array1" class="array-display"></div>
+        <div id="array2" class="array-display"></div>
+        <button id="sumButton">Calculate Sum</button>
+        <div id="arraySum" class="array-display" style="display: none;"></div>
+    </div>
+
+    <script>
+        // JavaScript to handle the 2D arrays and display the results
+
+        // Create two 2D arrays
+        const array2D1 = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+
+        const array2D2 = [
+            [9, 8, 7],
+            [6, 5, 4],
+            [3, 2, 1]
+        ];
+
+        // Function to display a 2D array
+        function displayArray(array, elementId) {
+            const arrayDisplay = array.map(row => row.join(', ')).join('\n');
+            document.getElementById(elementId).textContent = arrayDisplay;
+        }
+
+        // Function to add two 2D arrays and return the result
+        function addArrays(array1, array2) {
+            const numRows = array1.length;
+            const numCols = array1[0].length;
+            const resultArray = new Array(numRows);
+
+            for (let i = 0; i < numRows; i++) {
+                resultArray[i] = new Array(numCols);
+                for (let j = 0; j < numCols; j++) {
+                    resultArray[i][j] = array1[i][j] + array2[i][j];
+                }
+            }
+            return resultArray;
+        }
+
+        // Display the initial arrays
+        displayArray(array2D1, 'array1');
+        displayArray(array2D2, 'array2');
+
+        // Add event listener to the button to calculate and display the sum
+        document.getElementById('sumButton').addEventListener('click', function() {
+            const sumArray = addArrays(array2D1, array2D2);
+            displayArray(sumArray, 'arraySum');
+            document.getElementById('arraySum').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

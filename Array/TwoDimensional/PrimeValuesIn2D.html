@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers in 2D Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #0066cc;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .array-display {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e6f7ff;
+            border: 2px solid #b3e0ff;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: left;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f7ff;
+            border: 2px solid #b3e0ff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prime Numbers in 2D Array</h1>
+
+        <div class="array-display" id="arrayDisplay"></div>
+
+        <button onclick="findPrimeNumbers()">Find Prime Numbers</button>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // 2D array example
+        const array2D = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+
+        // Function to display the 2D array
+        function displayArray() {
+            const arrayDiv = document.getElementById('arrayDisplay');
+            let arrayText = '<b>2D Array:</b><br>';
+            for (let i = 0; i < array2D.length; i++) {
+                arrayText += array2D[i].join(' ') + '<br>';
+            }
+            arrayDiv.innerHTML = arrayText;
+        }
+
+        // Function to check if a number is prime
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        // Function to find all prime numbers in the 2D array
+        function findPrimeNumbers() {
+            const primeNumbers = [];
+            // Loop through the 2D array and find prime numbers
+            for (let i = 0; i < array2D.length; i++) {
+                for (let j = 0; j < array2D[i].length; j++) {
+                    if (isPrime(array2D[i][j])) {
+                        primeNumbers.push(array2D[i][j]);
+                    }
+                }
+            }
+
+            // Display the prime numbers
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            if (primeNumbers.length > 0) {
+                resultDiv.innerHTML = `Prime numbers in the 2D array are: ${primeNumbers.join(', ')}`;
+            } else {
+                resultDiv.innerHTML = 'No prime numbers found in the 2D array.';
+            }
+        }
+
+        // Call displayArray when the page loads to show the 2D array
+        displayArray();
+    </script>
+</body>
+</html>
