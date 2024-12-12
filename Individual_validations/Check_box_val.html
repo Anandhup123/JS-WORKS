@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Checkbox Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        input[type="checkbox"] {
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Single Checkbox Validation</h2>
+    <form id="checkboxForm">
+        <label>
+            <input type="checkbox" id="myCheckbox"> I agree to the terms and conditions
+        </label><br>
+        <button type="button" onclick="validateCheckbox()">Submit</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function validateCheckbox() {
+            const checkbox = document.getElementById("myCheckbox");
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            // Clear previous messages
+            errorMessage.textContent = "";
+            successMessage.textContent = "";
+
+            if (!checkbox.checked) {
+                errorMessage.textContent = "Please agree to the terms and conditions.";
+            } else {
+                successMessage.textContent = "Thank you for agreeing to the terms.";
+            }
+        }
+    </script>
+</body>
+</html>

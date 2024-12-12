@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #phoneError {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Phone Number Validation</h2>
+    <form id="phoneForm">
+        <label for="phoneInput">Phone Number:</label>
+        <input type="text" id="phoneInput" name="phoneInput" required>
+        <button type="button" onclick="validatePhoneNumber()">Validate Phone</button>
+        <p id="phoneError"></p>
+    </form>
+
+    <script>
+        function validatePhoneNumber() {
+            const phoneInput = document.getElementById("phoneInput").value;
+            const phoneError = document.getElementById("phoneError");
+            const phonePattern = /^\d{10}$/;
+
+            if (phonePattern.test(phoneInput)) {
+                phoneError.textContent = "Valid phone number!";
+                phoneError.style.color = "green";
+            } else {
+                phoneError.textContent = "Invalid phone number. Must be 10 digits.";
+                phoneError.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>File Upload Validation</h2>
+    <form id="fileUploadForm">
+        <label for="fileInput">Upload a File:</label>
+        <input type="file" id="fileInput" name="fileInput">
+        <button type="button" onclick="validateFile()">Upload</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function validateFile() {
+            const fileInput = document.getElementById("fileInput");
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            errorMessage.textContent = ""; // Clear previous messages
+            successMessage.textContent = ""; // Clear previous messages
+
+            // Check if a file has been selected
+            if (!fileInput.files.length) {
+                errorMessage.textContent = "Please select a file to upload.";
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf)$/i; // Allowed file types
+            const maxSizeInMB = 2; // Maximum file size in MB
+            const maxSizeInBytes = maxSizeInMB * 1024 * 1024; // Convert MB to bytes
+
+            // Validate file type based on extension
+            if (!allowedExtensions.exec(file.name)) {
+                errorMessage.textContent = "Invalid file type. Only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
+                return;
+            }
+
+            // Validate file size
+            if (file.size > maxSizeInBytes) {
+                errorMessage.textContent = `File size exceeds ${maxSizeInMB}MB limit. Please upload a smaller file.`;
+                return;
+            }
+
+            // If all checks pass
+            successMessage.textContent = "File uploaded successfully!";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Field Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Empty Field Validation</h2>
+    <form id="emptyFieldForm">
+        <label for="inputField">Enter Text:</label>
+        <input type="text" id="inputField" name="inputField" placeholder="Type something here">
+        <button type="button" onclick="checkEmptyField()">Submit</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function checkEmptyField() {
+            const inputField = document.getElementById("inputField").value.trim();
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            errorMessage.textContent = ""; 
+            successMessage.textContent = ""; 
+
+            if (inputField === "") {
+                errorMessage.textContent = "The field cannot be empty. Please enter some text.";
+            } else {
+                successMessage.textContent = "Field submitted successfully!";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Length Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Text Length Validation</h2>
+    <form id="textLengthForm">
+        <label for="textInput">Enter Text:</label>
+        <input type="text" id="textInput" name="textInput" placeholder="Enter your text here">
+        <button type="button" onclick="validateTextLength()">Validate Text</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function validateTextLength() {
+            const textInput = document.getElementById("textInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            errorMessage.textContent = ""; // Clear previous messages
+            successMessage.textContent = ""; // Clear previous messages
+
+            const minLength = 5; // Minimum required characters
+            const maxLength = 20; // Maximum allowed characters
+
+        
+            // Check minimum length
+            if (textInput.length < minLength) {
+                errorMessage.textContent = `Text is too short. Minimum length is ${minLength} characters.`;
+                return;
+            }
+
+            // Check maximum length
+            if (textInput.length > maxLength) {
+                errorMessage.textContent = `Text is too long. Maximum length is ${maxLength} characters.`;
+                return;
+            }
+
+            // If all checks pass
+            successMessage.textContent = "Text length is valid!";
+        }
+    </script>
+</body>
+</html>

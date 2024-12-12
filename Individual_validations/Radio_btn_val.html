@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Selection Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            padding: 10px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Gender Selection Validation</h2>
+    <form id="genderForm">
+        <label>
+            <input type="radio" name="gender" value="Male"> Male
+        </label><br>
+        <label>
+            <input type="radio" name="gender" value="Female"> Female
+        </label><br>
+        <label>
+            <input type="radio" name="gender" value="Other"> Other
+        </label><br>
+        <button type="button" onclick="validateGender()">Submit</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function validateGender() {
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            // Clear previous messages
+            errorMessage.textContent = "";
+            successMessage.textContent = "";
+
+            // Check the value of the selected radio button
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+
+            if (!selectedGender) {
+                errorMessage.textContent = "Please select your gender.";
+            } else {
+                successMessage.textContent = "You selected: " + selectedGender.value;
+            }
+        }
+    </script>
+</body>
+</html>

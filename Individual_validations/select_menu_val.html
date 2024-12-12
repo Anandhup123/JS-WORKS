@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Option Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            padding: 10px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Select Option Validation</h2>
+    <form id="selectForm">
+        <label for="genderSelect">Select your gender:</label>
+        <select id="genderSelect">
+            <option value="">--Please choose an option--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+        <button type="button" onclick="validateSelect()">Submit</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function validateSelect() {
+            const selectElement = document.getElementById("genderSelect");
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            // Clear previous messages
+            errorMessage.textContent = "";
+            successMessage.textContent = "";
+
+            // Check if the selected option is valid
+            if (selectElement.value === "") {
+                errorMessage.textContent = "Please select your gender.";
+            } else {
+                successMessage.textContent = "You selected: " + selectElement.value;
+            }
+        }
+    </script>
+</body>
+</html>

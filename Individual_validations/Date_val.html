@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+        #successMessage {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Comprehensive Date Validation</h2>
+    <form id="dateValidationForm">
+        <label for="dateInput">Enter Date:</label>
+        <input type="date" id="dateInput" name="dateInput" placeholder="YYYY-MM-DD">
+        <button type="button" onclick="validateDate()">Validate Date</button>
+        <p id="errorMessage"></p>
+        <p id="successMessage"></p>
+    </form>
+
+    <script>
+        function validateDate() {
+            const dateInput = document.getElementById("dateInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            errorMessage.textContent = ""; // Clear previous messages
+            successMessage.textContent = ""; // Clear previous messages
+
+            // Check if the date field is empty
+            if (dateInput === "") {
+                errorMessage.textContent = "Date field cannot be empty. Please enter a date.";
+                return;
+            }
+
+            // Parse the entered date
+            const enteredDate = new Date(dateInput);
+            const today = new Date();
+            const minDate = new Date("1900-01-01"); // Earliest allowed date
+            const ageLimit = 18; // Minimum age required (in years)
+            const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD format
+
+            // Check if the format is correct (only applies if user types the date manually)
+            if (!dateRegex.test(dateInput)) {
+                errorMessage.textContent = "Invalid date format. Please use YYYY-MM-DD.";
+                return;
+            }
+
+            // Future date check
+            if (enteredDate > today) {
+                errorMessage.textContent = "The date cannot be in the future. Please enter a valid date.";
+                return;
+            }
+
+            // Minimum age check (e.g., user must be at least 18 years old)
+            const ageDiff = today.getFullYear() - enteredDate.getFullYear();
+            const monthDiff = today.getMonth() - enteredDate.getMonth();
+            const dayDiff = today.getDate() - enteredDate.getDate();
+            
+            if (ageDiff < ageLimit || (ageDiff === ageLimit && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
+                errorMessage.textContent = "You must be at least 18 years old.";
+                return;
+            }
+
+            // Valid date range check
+            if (enteredDate < minDate) {
+                errorMessage.textContent = "The date cannot be before January 1, 1900.";
+                return;
+            }
+
+            // If all checks pass
+            successMessage.textContent = "Date is valid!";
+        }
+    </script>
+</body>
+</html>

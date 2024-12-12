@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #emailError {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <form id="emailForm">
+        <label for="emailInput">Email:</label>
+        <input type="text" id="emailInput" name="emailInput" required>
+        <button type="button" onclick="validateEmail()">Validate Email</button>
+        <p id="emailError"></p>
+    </form>
+
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById("emailInput").value;
+            const emailError = document.getElementById("emailError");
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailPattern.test(emailInput)) {
+                emailError.textContent = "Valid email address!";
+                emailError.style.color = "green";
+            } else {
+                emailError.textContent = "Invalid email address.";
+                emailError.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
