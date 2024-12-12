@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+        #animatedText {
+            font-size: 24px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Click to Animate Text</h2>
+<button id="animateText">Animate Text</button>
+<p id="animatedText">Watch me animate!</p>
+
+<script>
+    $("#animateText").click(function() {
+        $("#animatedText").show().animate({
+            fontSize: "40px",
+            opacity: 1
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>

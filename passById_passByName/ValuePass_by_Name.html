@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name and Password Transfer Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Name and Password Transfer Example</h1>
+        <input type="text" name="inputName" placeholder="Enter your name">
+        <input type="password" name="inputPassword" placeholder="Enter your password">
+        <button onclick="transferValues()">Transfer Values</button>
+        <h2>Output</h2>
+        <input type="text" name="outputName" placeholder="Name will appear here" readonly>
+        <input type="text" name="outputPassword" placeholder="Password will appear here" readonly>
+    </div>
+
+    <script>
+        function transferValues() {
+            // Get the elements by their name attributes
+            var nameElements = document.getElementsByName('inputName');
+            var passwordElements = document.getElementsByName('inputPassword');
+            var outputNameElements = document.getElementsByName('outputName');
+            var outputPasswordElements = document.getElementsByName('outputPassword');
+            
+            // Assuming there is only one element with each name
+            var nameValue = nameElements[0].value;
+            var passwordValue = passwordElements[0].value;
+            
+            // Set the values to the output input fields
+            outputNameElements[0].value =  nameValue;
+            outputPasswordElements[0].value =  passwordValue;
+            
+
+        }
+    </script>
+</body>
+</html>

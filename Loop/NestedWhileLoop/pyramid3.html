@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Goto Console Screen</h1>
+    <script>
+// Full Pyramid Pattern
+let row3 = 1;
+let pattern3 = "";
+while (row3 <= 5) {
+  let spaces3 = 5 - row3;
+  let stars3 = 2 * row3 - 1;
+
+  // Add spaces
+  let s = 1;
+  while (s <= spaces3) {
+    pattern3 += "  ";
+    s++;
+  }
+
+  // Add stars
+  let star = 1;
+  while (star <= stars3) {
+    pattern3 += "* ";
+    star++;
+  }
+
+  pattern3 += "\n";
+  row3++;
+}
+console.log("Pattern 3: Full Pyramid\n" + pattern3);
+
+    </script>
+</body>
+</html>

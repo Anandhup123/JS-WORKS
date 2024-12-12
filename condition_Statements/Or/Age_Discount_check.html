@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OR Operator - Example 1</title>
+</head>
+<body>
+    <h1>Age Discount Checker</h1>
+
+    <p>Enter your age and click the button to check if you qualify for a discount.</p>
+
+    <label for="ageInput">Enter your age: </label>
+    <input type="number" id="ageInput" placeholder="Enter age" min="0">
+
+    <button onclick="checkAge()">Check Discount</button>
+    
+    <p id="result1"></p>
+
+    <script>
+        function checkAge() {
+            let age = document.getElementById("ageInput").value; // Get the value from the input field
+
+            age = parseInt(age); // Convert age from string to number
+
+            if (age < 18 || age > 60) {
+                document.getElementById("result1").innerHTML = "You qualify for a discount!";
+            } else {
+                document.getElementById("result1").innerHTML = "Sorry, no discount for you.";
+            }
+        }
+    </script>
+</body>
+</html>

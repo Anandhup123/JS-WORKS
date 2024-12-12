@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Print Prime Numbers</title>
+  <style>
+    body {
+      background-color: #eef2f3;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 350px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .prime-list {
+      background-color: #e0f7fa;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Print Prime Numbers</h1>
+  <input type="number" id="start" placeholder="Enter Start Limit" min="0">
+  <input type="number" id="end" placeholder="Enter End Limit" min="0">
+  <button onclick="printPrimes()">Show Primes</button>
+  <div class="prime-list" id="primeNumbers"></div>
+</div>
+
+<script>
+  function printPrimes() {
+    let start = parseInt(document.getElementById("start").value);
+    let end = parseInt(document.getElementById("end").value);
+    let primeList = "";
+    let num = start;
+    while (num <= end) {
+      if (isPrime(num)) {
+        primeList += num + " ";
+      }
+      num++;
+    }
+
+    document.getElementById("primeNumbers").innerText = 
+      `Prime Numbers: ${primeList}`;
+  }
+
+  function isPrime(n) {
+    if (n < 2) return false;
+    let i = 2;
+    while (i * i <= n) {
+      if (n % i === 0) return false;
+      i++;
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>

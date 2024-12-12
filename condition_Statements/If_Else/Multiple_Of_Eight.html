@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple of 8 Check</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fff3e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: #ffffff;
+        border: 2px solid #ff5722;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 320px;
+        text-align: center;
+      }
+      input,
+      button {
+        padding: 12px;
+        margin: 10px 0;
+        border: 2px solid #ff5722;
+        border-radius: 6px;
+        width: calc(100% - 24px);
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #ff5722;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #e64a19;
+      }
+      .result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #e64a19;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Check Multiple of 8</h1>
+      <input type="number" id="number" placeholder="Enter a number" />
+      <button onclick="checkMultiple()">Check</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      function checkMultiple() {
+        var number = parseFloat(document.getElementById("number").value);
+        var result = "";
+
+        if (number % 8 === 0) {
+          result = "The number is a multiple of 8.";
+        } else {
+          result = "The number is not a multiple of 8.";
+        }
+
+        document.getElementById("result").innerText = result;
+      }
+    </script>
+  </body>
+</html>

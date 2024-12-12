@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of Numbers in Range</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .output {
+            background-color: #f8bbd0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #d81b60;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sum of Numbers in a Range</h1>
+    <div class="container">
+        <input type="number" id="startNumber" placeholder="Enter start number" aria-label="Start number" />
+        <input type="number" id="endNumber" placeholder="Enter end number" aria-label="End number" />
+        <button onclick="calculateSum()" aria-label="Calculate sum">Calculate Sum</button>
+        <div class="output" id="sumOutput"></div>
+    </div>
+
+    <script>
+        function calculateSum() {
+            const start = parseInt(document.getElementById("startNumber").value);
+            const end = parseInt(document.getElementById("endNumber").value);
+            const outputDiv = document.getElementById("sumOutput");
+
+            // Validate input range
+            if (isNaN(start) || isNaN(end)) {
+                outputDiv.innerHTML = "Please enter valid numbers.";
+                return;
+            }
+            if (start > end) {
+                outputDiv.innerHTML = "The start number must be less than or equal to the end number.";
+                return;
+            }
+
+            let sum = 0;
+
+            for (let i = start; i <= end; i++) {
+                sum += i;
+            }
+
+            outputDiv.innerHTML = `The sum of numbers between ${start} and ${end} is <strong>${sum}</strong>.`;
+        }
+    </script>
+</body>
+</html>

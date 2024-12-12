@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark List Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mark List Calculator</h1>
+        <input type="number" name="mark1" placeholder="Enter mark 1" id="mark1">
+        <input type="number" name="mark2" placeholder="Enter mark 2" id="mark2">
+        <input type="number" name="mark3" placeholder="Enter mark 3" id="mark3">
+        <button onclick="calculateResults()">Calculate</button>
+        <div class="result">
+            <div id="total">Total: </div>
+            <div id="average">Average: </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateResults() {
+            // Get the values from the input fields
+            var mark1 = parseFloat(document.getElementById('mark1').value) ;
+            var mark2 = parseFloat(document.getElementById('mark2').value) ;
+            var mark3 = parseFloat(document.getElementById('mark3').value) ;
+            
+            // Calculate total and average
+            var total = mark1 + mark2 + mark3;
+            var average = total / 3;
+            
+            // Display the results
+            document.getElementById('total').innerText = 'Total: ' + total;
+            document.getElementById('average').innerText = 'Average: ' + average.toFixed(2);
+        }
+    </script>
+</body>
+</html>

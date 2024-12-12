@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfect Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff3e0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .output {
+            padding: 15px;
+            background-color: #ffe0b2;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfect Number Checker</h1>
+    <div class="container">
+        <input type="number" id="perfectInput" placeholder="Enter a number" />
+        <button onclick="checkPerfect()" aria-label="Check if the number is perfect">Check</button>
+        <div class="output" id="perfectOutput"></div>
+    </div>
+
+    <script>
+        function checkPerfect() {
+            const inputNumber = parseInt(document.getElementById("perfectInput").value);
+            let sumOfDivisors = 0;
+
+            for (let i = 1; i < inputNumber; i++) {
+                if (inputNumber % i === 0) {
+                    sumOfDivisors += i;
+                }
+            }
+
+            document.getElementById("perfectOutput").innerHTML =
+                inputNumber === sumOfDivisors
+                    ? `${inputNumber} is a Perfect Number.`
+                    : `${inputNumber} is not a Perfect Number.`;
+        }
+    </script>
+</body>
+</html>

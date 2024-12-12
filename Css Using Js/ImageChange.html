@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="blog_2.jpg" alt="" id="images">
+    <button onclick="changeImg()">changeImage</button>
+<script>
+    function changeImg(){
+            // document.getElementById('images').src="blog_3.jpg"
+            var temp=document.getElementById('images').src
+            if(temp.indexOf('blog_2.jpg')!=-1){
+                document.getElementById('images').src="blog_3.jpg"
+            }else{
+                document.getElementById('images').src="blog_2.jpg"
+            }
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Count Perfect Numbers</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input, button {
+      width: 80%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    p {
+      color: #333;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Count Perfect Numbers</h1>
+  <input type="number" id="start" placeholder="Start Limit" min="0">
+  <input type="number" id="end" placeholder="End Limit" min="0">
+  <button onclick="countPerfectNumbers()">Count</button>
+  <p id="result"></p>
+</div>
+
+<script>
+  function countPerfectNumbers() {
+    let start = parseInt(document.getElementById("start").value);
+    let end = parseInt(document.getElementById("end").value);
+    let count = 0;
+
+    for (let num = start; num <= end; num++) {
+      if (isPerfect(num)) {
+        count++;
+      }
+    }
+
+    document.getElementById("result").innerText = 
+      `Total perfect numbers between ${start} and ${end}: ${count}`;
+  }
+
+  function isPerfect(n) {
+    let sum = 0;
+    for (let i = 1; i <= n / 2; i++) {
+      if (n % i === 0) {
+        sum += i;
+      }
+    }
+    return sum === n && n !== 0;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PALINDROM OR NOT</h1>
+    
+        <input type="text" placeholder="Enter a positive Intiger" id="in">
+        <button onclick="palindrom()">click_me</button>
+    
+    <p id="output"></p>
+    <script>
+        function palindrom()
+        {
+            var rev = 0;
+            var n=document.getElementById("in").value;
+            var temp=n ;
+            while (n > 0)
+            {
+                rem =n % 10;
+                rev =(rev * 10) + rem;
+                n= parseInt(n/10);
+            }
+            if(rev==temp){
+                alert(temp+"is a palindrom");
+                document.getElementById("output").innerHTML = temp+"is a palindrom";
+            }
+            else{
+                alert(temp+"is not palindrom");
+                document.getElementById("output").innerHTML = temp+"is not a palindrom";
+            }
+
+        }
+    </script>
+</body>
+</html>

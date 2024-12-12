@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Billing System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .input-section, .output-section {
+            margin: 10px 0;
+        }
+        select, input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Billing System</h1>
+        <div class="input-section">
+            <select id="productSelect" onchange="updatePrice()">
+                <option value="0">Select a fruit</option>
+                <option value="5">Apple - $5</option>
+                <option value="4">Banana - $4</option>
+                <option value="6">Orange - $6</option>
+                <option value="7">Strawberry - $7</option>
+            </select>
+            <input type="number" id="quantity" placeholder="Enter quantity">
+            <button onclick="generateBill()">Generate Bill</button>
+        </div>
+        <div class="output-section">
+            <div id="price">Price: $0</div>
+            <div id="total">Total Amount: $0</div>
+            <div id="discountedTotal">Discounted Amount: $0</div>
+        </div>
+    </div>
+
+    <script>
+        var pricePerUnit = 0;
+
+        function updatePrice() {
+            // Get the selected product's price
+            var productSelect = document.getElementById('productSelect');
+            pricePerUnit = parseFloat(productSelect.value);
+            
+            // Update the price display
+            document.getElementById('price').innerText = 'Price: $' + pricePerUnit;
+            
+            // Reset quantity and total amount
+            document.getElementById('quantity').value = '';
+            document.getElementById('total').innerText = 'Total Amount: $0';
+            document.getElementById('discountedTotal').innerText = 'Discounted Amount: $0';
+        }
+
+
+
+        function generateBill() {
+            // Calculate total and discounted amount
+            var quantity = parseFloat(document.getElementById('quantity').value) || 0;
+            var totalAmount = pricePerUnit * quantity;
+            var discountedAmount = totalAmount * 0.75; // 25% discount
+            document.getElementById('total').innerText = 'Total Amount: $' + totalAmount.toFixed(2);
+            // Display the results
+            document.getElementById('total').innerText = 'Total Amount: $' + totalAmount.toFixed(2);
+            document.getElementById('discountedTotal').innerText = 'Discounted Amount: $' + discountedAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Enter some digits</h2>
+    <input type="number" name="" id="num"><br>
+    <button onclick="rev()">Submit</button>
+
+    <script>
+      function rev() {
+        let a =parseInt( document.getElementById('num').value);
+        let sum = 0; 
+        let rem = 0;
+
+ 
+        
+        while (a > 0) {
+          rem = a % 10; 
+          sum = sum+ rem;  
+          a = parseInt(a / 10);  
+        }
+        alert("Sum of The Digits Are = "+sum);
+      }
+    </script>
+  </body>
+</html>

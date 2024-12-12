@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positive or Negative Check</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e0f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: #ffffff;
+        border: 2px solid #00796b;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 320px;
+        text-align: center;
+      }
+      input,
+      button {
+        padding: 12px;
+        margin: 10px 0;
+        border: 2px solid #00796b;
+        border-radius: 6px;
+        width: calc(100% - 24px);
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #00796b;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #004d40;
+      }
+      .result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #004d40;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Check Number</h1>
+      <input type="number" id="number" placeholder="Enter a number" />
+      <button onclick="checkNumber()">Check</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      function checkNumber() {
+        var number = parseFloat(document.getElementById("number").value);
+        var result = "";
+
+        if (number >= 0) {
+          result = "The number is positive.";
+        } else {
+          result = "The number is negative.";
+        }
+
+        document.getElementById("result").innerText = result;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Table Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f8e9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .output {
+      background-color: #f0f4c3;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #388e3c;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Multiplication Table Generator</h1>
+  <div class="container">
+    <input type="number" id="tableInput" placeholder="Enter a number" />
+    <button onclick="generateTable()" aria-label="Generate Multiplication Table">Generate Table</button>
+    <div class="output" id="tableOutput"></div>
+  </div>
+
+  <script>
+    function generateTable() {
+      const inputNumber = parseInt(document.getElementById('tableInput').value);
+      let multiplicationTable = `<h3>Multiplication Table for ${inputNumber}</h3><ul>`;
+
+      for (let i = 1; i <= 10; i++) {
+        multiplicationTable += `<li>${inputNumber} x ${i} = ${inputNumber * i}</li>`;
+      }
+      multiplicationTable += '</ul>';
+
+      document.getElementById('tableOutput').innerHTML = multiplicationTable;
+    }
+  </script>
+
+</body>
+</html>

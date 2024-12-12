@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Goto Console Screen</h1>
+    <script>
+// Diamond Shape Pattern
+let pattern5 = "";
+
+// Top half of the diamond
+let row5 = 1;
+while (row5 <= 5) {
+  let spaces5 = 5 - row5;
+  let stars5 = 2 * row5 - 1;
+
+  // Add spaces
+  let s = 1;
+  while (s <= spaces5) {
+    pattern5 += "  ";
+    s++;
+  }
+
+  // Add stars
+  let star = 1;
+  while (star <= stars5) {
+    pattern5 += "* ";
+    star++;
+  }
+
+  pattern5 += "\n";
+  row5++;
+}
+
+// Bottom half of the diamond
+let row5Bottom = 4;
+while (row5Bottom >= 1) {
+  let spaces5Bottom = 5 - row5Bottom;
+  let stars5Bottom = 2 * row5Bottom - 1;
+
+  // Add spaces
+  let s = 1;
+  while (s <= spaces5Bottom) {
+    pattern5 += "  ";
+    s++;
+  }
+
+  // Add stars
+  let star = 1;
+  while (star <= stars5Bottom) {
+    pattern5 += "* ";
+    star++;
+  }
+
+  pattern5 += "\n";
+  row5Bottom--;
+}
+console.log("Pattern 5: Diamond Shape\n" + pattern5);
+
+    </script>
+</body>
+</html>

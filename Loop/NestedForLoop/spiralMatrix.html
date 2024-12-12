@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nested For Loop - Spiral Matrix</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        td, th {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .explanation {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spiral Matrix</h1>
+        <input type="number" id="rows" placeholder="Number of rows">
+        <input type="number" id="cols" placeholder="Number of columns">
+        <button onclick="generateSpiralMatrix()">Generate Spiral Matrix</button>
+        <div id="matrix-container"></div>
+        <p class="explanation" id="explanation"></p>
+    </div>
+
+    <script>
+        function generateSpiralMatrix() {
+            let rows = parseInt(document.getElementById('rows').value);
+            let cols = parseInt(document.getElementById('cols').value);
+
+            if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
+                alert('Please enter valid positive numbers for rows and columns.');
+                return;
+            }
+
+            let matrix = Array.from({ length: rows }, () => Array(cols).fill(0));
+            let value = 1;
+            let top = 0, bottom = rows - 1, left = 0, right = cols - 1;
+
+            while (top <= bottom && left <= right) {
+                for (let i = left; i <= right; i++) matrix[top][i] = value++;
+                top++;
+                for (let i = top; i <= bottom; i++) matrix[i][right] = value++;
+                right--;
+                for (let i = right; i >= left; i--) matrix[bottom][i] = value++;
+                bottom--;
+                for (let i = bottom; i >= top; i--) matrix[i][left] = value++;
+                left++;
+            }
+
+            let table = '<table>';
+            for (let i = 0; i < rows; i++) {
+                table += '<tr>';
+                for (let j = 0; j < cols; j++) {
+                    table += `<td>${matrix[i][j]}</td>`;
+                }
+                table += '</tr>';
+            }
+            table += '</table>';
+
+            document.getElementById('matrix-container').innerHTML = table;
+            document.getElementById('explanation').innerHTML = `This table represents a ${rows}x${cols} spiral matrix.`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .output {
+            padding: 15px;
+            background-color: #c8e6c9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prime Number Checker</h1>
+    <div class="container">
+        <input type="number" id="primeInput" placeholder="Enter a number" />
+        <button onclick="checkPrime()" aria-label="Check if the number is prime">Check</button>
+        <div class="output" id="primeOutput"></div>
+    </div>
+
+    <script>
+        function checkPrime() {
+            const inputNumber = parseInt(document.getElementById("primeInput").value);
+            const outputDiv = document.getElementById("primeOutput");
+
+            if (inputNumber < 2) {
+                outputDiv.innerHTML = `${inputNumber} is not a prime number.`;
+                return;
+            }
+
+            for (let i = 2; i <= Math.sqrt(inputNumber); i++) {
+                if (inputNumber % i === 0) {
+                    outputDiv.innerHTML = `${inputNumber} is not a prime number.`;
+                    return;
+                }
+            }
+            outputDiv.innerHTML = `${inputNumber} is a prime number.`;
+        }
+    </script>
+</body>
+</html>

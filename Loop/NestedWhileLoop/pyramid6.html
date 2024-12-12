@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Goto Console Screen</h1>
+    <script>
+// Number Pyramid Pattern
+let row6 = 1;
+let pattern6 = "";
+while (row6 <= 5) {
+  let spaces6 = 5 - row6;
+
+  // Add spaces
+  let s = 1;
+  while (s <= spaces6) {
+    pattern6 += "  ";
+    s++;
+  }
+
+  // Add numbers
+  let num = 1;
+  while (num <= row6) {
+    pattern6 += num + " ";
+    num++;
+  }
+
+  pattern6 += "\n";
+  row6++;
+}
+console.log("Pattern 6: Number Pyramid\n" + pattern6);
+
+    </script>
+</body>
+</html>

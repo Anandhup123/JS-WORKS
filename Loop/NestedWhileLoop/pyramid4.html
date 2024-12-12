@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Goto Console Screen</h1>
+    <script>
+// Inverted Pyramid Pattern
+let row4 = 5;
+let pattern4 = "";
+while (row4 >= 1) {
+  let spaces4 = 5 - row4;
+  let stars4 = 2 * row4 - 1;
+
+  // Add spaces
+  let s = 1;
+  while (s <= spaces4) {
+    pattern4 += "  ";
+    s++;
+  }
+
+  // Add stars
+  let star = 1;
+  while (star <= stars4) {
+    pattern4 += "* ";
+    star++;
+  }
+
+  pattern4 += "\n";
+  row4--;
+}
+console.log("Pattern 4: Inverted Pyramid\n" + pattern4);
+
+    </script>
+</body>
+</html>

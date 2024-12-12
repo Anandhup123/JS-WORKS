@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Bill Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            border: 2px solid #00796b;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 350px;
+            text-align: center;
+        }
+        select, input, button {
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #00796b;
+            border-radius: 6px;
+            width: calc(100% - 24px);
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #00796b;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #004d40;
+            text-align: left;
+        }
+        .result label {
+            display: block;
+            margin: 5px 0 2px;
+        }
+        .result input {
+            background-color: #e0f2f1;
+            border: none;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Bill Calculator</h1>
+        <select id="productSelect" >
+            <option value="">Select Product</option>
+            <option value="10">Apple - ₹10</option>
+            <option value="20">Banana - ₹20</option>
+            <option value="30">Cherry - ₹30</option>
+            <option value="40">Date - ₹40</option>
+        </select>
+        <input type="number" id="quantity" placeholder="Enter Quantity" oninput="calculateTotal()">
+        <div class="result">
+            <label for="price">Price:</label>
+            <input type="text" id="price" readonly>
+            <label for="totalAmount">Total Amount:</label>
+            <input type="text" id="totalAmount" readonly>
+            <label for="discount">Discount :</label>
+            <input type="text" id="discount" readonly>
+            <label for="discountPercentage">Discount Percentage:</label>
+            <input type="text" id="discountPercentage" readonly>
+            <label for="finalAmount">Final Amount:</label>
+            <input type="text" id="finalAmount" readonly>
+        </div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            var price = parseFloat(document.getElementById('productSelect').value) || 0;
+            var quantity = parseFloat(document.getElementById('quantity').value) || 0;
+            var totalAmount = price * quantity;
+            var discount = 0;
+            var discountPercentage = 0;
+
+            // Determine discount based on total amount
+            if (totalAmount > 1000) {
+                discount = totalAmount * 0.20; // 20% discount
+                discountPercentage = 20;
+            } else if (totalAmount > 500) {
+                discount = totalAmount * 0.15; // 15% discount
+                discountPercentage = 15;
+            } else if (totalAmount > 200) {
+                discount = totalAmount * 0.10; // 10% discount
+                discountPercentage = 10;
+            } else {
+                discount = 0;
+                discountPercentage = 0;
+            }
+
+            var finalAmount = totalAmount - discount;
+
+            // Display results
+            document.getElementById('price').value = '₹' + price.toFixed(2);
+            document.getElementById('totalAmount').value = '₹' + totalAmount.toFixed(2);
+            document.getElementById('discount').value = '₹' + discount.toFixed(2);
+            document.getElementById('discountPercentage').value = discountPercentage + '%';
+            document.getElementById('finalAmount').value = '₹' + finalAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>

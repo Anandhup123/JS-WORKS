@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Continue Example</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        .explanation {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Continue Example</h1>
+        <button onclick="displayOddNumbers()">Click to Display Odd Numbers</button>
+        <p id="output"></p>
+        <p class="explanation" id="explanation"></p>
+    </div>
+
+    <script>
+        function displayOddNumbers() {
+            let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            let text = '';
+            let explanation = 'The loop will skip even numbers and display only odd numbers.';
+
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0) {
+                    continue; // Skip the even numbers
+                }
+                text += numbers[i] + '<br>';
+            }
+
+            document.getElementById('output').innerHTML = text;
+            document.getElementById('explanation').innerHTML = explanation;
+        }
+    </script>
+</body>
+</html>
