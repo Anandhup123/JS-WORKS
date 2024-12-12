@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p"></p>
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+        arr.splice(2, 0, 6, 7);    // 2 is the index, 0 is the number of elements to be removed, 6, 7 are the elements to be added at index 2
+        document.getElementById("p").innerHTML = arr;
+    </script>
+</body>
+</html>
