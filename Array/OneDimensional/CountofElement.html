@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p"></p>
+    <script>
+        var arr = [11, 42, 45, 23, 4, 11, 2, 11, 15];
+        var count = 0;
+        let element = parseInt(prompt("Enter the number to count: "));
+        arr.forEach(num => {
+            if (num == element) {
+                count++;
+            }
+        });
+        document.getElementById("p").innerHTML = count;
+    </script>
+</body>
+
+</html>
