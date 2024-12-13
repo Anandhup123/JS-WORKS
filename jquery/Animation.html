@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+        }
+        .animate-box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="animate-box"></div>
+
+    <script>
+        $(document).ready(function(){
+            function animateBox() {
+                $('.animate-box').animate({
+                    left: '+=50px',
+                    height: 'toggle',
+                    opacity: '0.5',
+                    width: '+=50px'
+                }, 1000)
+                .animate({
+                    top: '+=50px',
+                    height: 'toggle',
+                    opacity: '1',
+                    width: '-=50px'
+                }, 1000)
+                .animate({
+                    left: '-=50px',
+                    height: 'toggle',
+                    opacity: '0.5',
+                    width: '+=50px'
+                }, 1000)
+                .animate({
+                    top: '-=50px',
+                    height: 'toggle',
+                    opacity: '1',
+                    width: '-=50px'
+                }, 1000, animateBox);
+            }
+            animateBox();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FadeIn Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #4a90e2;
+            color: white;
+            display: none; /* Initially hidden */
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="fadeInButton">Fade In</button>
+    <div class="box">I am now visible!</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#fadeInButton').click(function() {
+                $('.box').fadeIn(2000);  // Fade in over 2 seconds
+            });
+        });
+    </script>
+</body>
+</html>

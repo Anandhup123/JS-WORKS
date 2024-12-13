@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FadeOut Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #4a90e2;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="fadeOutButton">Fade Out</button>
+    <div class="box">I will fade out!</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#fadeOutButton').click(function() {
+                $('.box').fadeOut(2000);  // Fade out over 2 seconds
+            });
+        });
+    </script>
+</body>
+</html>

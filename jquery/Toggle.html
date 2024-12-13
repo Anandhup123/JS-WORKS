@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show/Hide Toggle</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="toggle-button">Toggle</button>
+    <p id="toggle-paragraph" style="display:none;">This is a toggle paragraph.</p>
+
+    <script>
+        $(document).ready(function(){
+            $('#toggle-button').click(function(){
+                $('#toggle-paragraph').toggle();
+            });
+        });
+    </script>
+</body>
+</html>
