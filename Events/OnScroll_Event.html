@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OnScroll Event Example</title>
+	<style>
+		body {
+			height: 2000px; /* To enable scrolling */
+		}
+		#scrollStatus {
+			position: fixed;
+			top: 10px;
+			left: 10px;
+			background-color: lightgray;
+			padding: 20px; /* Increased padding */
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body onscroll="handleScroll()">
+	<div id="scrollStatus">Scroll to see the effect</div>
+
+	<script>
+		function handleScroll() {
+			const scrollStatus = document.getElementById('scrollStatus');
+			scrollStatus.textContent = `Scroll Y: ${window.scrollY}px`;
+		}
+	</script>
+</body>
+</html>

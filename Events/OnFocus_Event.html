@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OnFocus Event Example</title>
+	<style>
+		.input-field {
+			padding: 10px;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			transition: border-color 0.3s;
+		}
+		.input-field:focus {
+			border-color: #66afe9;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>OnFocus Event Example</h1>
+	<input type="text" class="input-field" onfocus="handleFocus(event)" placeholder="Focus on me!">
+	<script>
+		function handleFocus(event) {
+			console.log('Input field is focused');
+		}
+	</script>
+</body>
+</html>
+<p id="message"></p>
+<script>
+	function handleFocus(event) {
+		console.log('Input field is focused');
+		document.getElementById('message').innerText = 'Input field is focused';
+	}
+</script>
