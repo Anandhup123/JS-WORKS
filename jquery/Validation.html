@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  </body>  <form id="myForm">
+    <form id="myForm"></form>
         <label for="name">Name:</label>
         <input type="text" id="name">
         <span class="error" id="nameError"></span>
@@ -20,6 +20,11 @@
         <label for="email">Email:</label>
         <input type="text" id="email">
         <span class="error" id="emailError"></span>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+        <span class="error" id="passwordError"></span>
         <br><br>
 
         <button type="submit">Submit</button>
@@ -31,6 +36,7 @@
                 var isValid = true;
                 var name = $("#name").val().trim();
                 var email = $("#email").val().trim();
+                var password = $("#password").val().trim();
 
                 // Clear previous error messages
                 $(".error").text("");
@@ -48,6 +54,15 @@
                     isValid = false;
                 } else if (!email.match(emailPattern)) {
                     $("#emailError").text("Enter a valid email");
+                    isValid = false;
+                }
+
+                // Password validation
+                if (password === "") {
+                    $("#passwordError").text("Password is required");
+                    isValid = false;
+                } else if (password.length < 6) {
+                    $("#passwordError").text("Password must be at least 6 characters long");
                     isValid = false;
                 }
 
