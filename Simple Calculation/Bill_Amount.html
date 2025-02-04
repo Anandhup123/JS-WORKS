@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bill Amount Calculation</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+			padding: 20px;
+			background-color: #f4f4f4;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		h1 {
+			color: #333;
+		}
+		label {
+			font-weight: bold;
+		}
+		input {
+			margin-bottom: 10px;
+			padding: 5px;
+			width: 200px;
+		}
+		button {
+			padding: 10px 20px;
+			background-color: #28a745;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #218838;
+		}
+		#billAmount {
+			margin-top: 20px;
+			font-size: 1.2em;
+			color: #555;
+		}
+	</style>
+	<script>
+		function calculateBill() {
+			const price = parseFloat(document.getElementById('price').value);
+			const quantity = parseInt(document.getElementById('quantity').value);
+			if (isNaN(price) || isNaN(quantity)) {
+				alert('Please enter valid numbers for price and quantity.');
+				return;
+			}
+			const total = price * quantity;
+			const discount = total * 0.25;
+			const finalAmount = total - discount;
+			document.getElementById('billAmount').innerText = 'Total Bill Amount after 25% discount: $' + finalAmount.toFixed(2);
+		}
+	</script>
+</head>
+<body>
+	<h1>Bill Amount Calculation</h1>
+	<label for="price">Price per Product: </label>
+	<input type="number" id="price" step="0.01"><br><br>
+	<label for="quantity">Quantity: </label>
+	<input type="number" id="quantity"><br><br>
+	<button onclick="calculateBill()">Generate Bill</button>
+	<p id="billAmount"></p>
+</body>
+</html>

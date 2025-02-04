@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Week Days Select Box</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			margin: 0;
+			padding: 20px;
+		}
+
+		label {
+			font-size: 18px;
+			margin-right: 10px;
+		}
+
+		select {
+			font-size: 16px;
+			padding: 5px;
+			margin-bottom: 20px;
+		}
+
+		p#result {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+		}
+	</style>
+</head>
+<body>
+	<label for="days">Choose a day of the week:</label>
+	<select id="days" name="days">
+		<option value="Sunday">Sunday</option>
+		<option value="Monday">Monday</option>
+		<option value="Tuesday">Tuesday</option>
+		<option value="Wednesday">Wednesday</option>
+		<option value="Thursday">Thursday</option>
+		<option value="Friday">Friday</option>
+		<option value="Saturday">Saturday</option>
+	</select>
+	<p id="result"></p>
+	<script>
+		document.getElementById('days').addEventListener('change', function() {
+			var selectedDay = this.value;
+			var resultText = selectedDay + ' is a ';
+			if (selectedDay === 'Saturday' || selectedDay === 'Sunday') {
+				resultText += 'weekend.';
+			} else {
+				resultText += 'weekday.';
+			}
+			document.getElementById('result').textContent = resultText;
+		});
+	</script>
+</body>
+</html>

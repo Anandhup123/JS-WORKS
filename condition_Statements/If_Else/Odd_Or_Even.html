@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Positive or Negative Check</title>
+    <title>Odd or Even Check</title>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -58,13 +58,13 @@
 
     <script>
       function checkNumber() {
-        var number = parseFloat(document.getElementById("number").value);
+        var number = parseInt(document.getElementById("number").value);
         var result = "";
 
-        if (number >= 0) {
-          result = "The number is positive.";
+        if (number % 2 === 0) {
+          result = "The number is even.";
         } else {
-          result = "The number is negative.";
+          result = "The number is odd.";
         }
 
         document.getElementById("result").innerText = result;

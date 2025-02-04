@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pass or Fail</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.container {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		h1 {
+			margin-bottom: 20px;
+		}
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
+		input[type="number"] {
+			width: 100%;
+			padding: 8px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+		button {
+			background-color: #28a745;
+			color: #fff;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #218838;
+		}
+		#result {
+			margin-top: 20px;
+			font-size: 18px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Enter Marks for 6 Subjects</h1>
+		<form id="marksForm">
+			<label for="subject1">Subject 1:</label>
+			<input type="number" id="subject1" required><br>
+			<label for="subject2">Subject 2:</label>
+			<input type="number" id="subject2" required><br>
+			<label for="subject3">Subject 3:</label>
+			<input type="number" id="subject3" required><br>
+			<label for="subject4">Subject 4:</label>
+			<input type="number" id="subject4" required><br>
+			<label for="subject5">Subject 5:</label>
+			<input type="number" id="subject5" required><br>
+			<label for="subject6">Subject 6:</label>
+			<input type="number" id="subject6" required><br><br>
+		   <button type="button" onclick="checkPassOrFail()">Submit</button>
+		</form>
+		<p id="result"></p>
+	</div>
+	<script>
+		function checkPassOrFail() {
+			const subject1 = document.getElementById('subject1').value;
+			const subject2 = document.getElementById('subject2').value;
+			const subject3 = document.getElementById('subject3').value;
+			const subject4 = document.getElementById('subject4').value;
+			const subject5 = document.getElementById('subject5').value;
+			const subject6 = document.getElementById('subject6').value;
+
+			if (subject1 > 35 && subject2 > 35 && subject3 > 35 && subject4 > 35 && subject5 > 35 && subject6 > 35) {
+				document.getElementById('result').innerText = 'Passed';
+			} else {
+				document.getElementById('result').innerText = 'Failed';
+			}
+		}
+	</script>
+</body>
+</html>

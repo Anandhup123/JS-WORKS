@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Employee Salary Slip</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+		.container {
+			max-width: 400px;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.form-group {
+			margin-bottom: 15px;
+		}
+		.form-group label {
+			display: block;
+			margin-bottom: 5px;
+		}
+		.form-group input {
+			width: 100%;
+			padding: 8px;
+			box-sizing: border-box;
+		}
+		.form-group button {
+			padding: 10px 15px;
+			background-color: #007BFF;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.form-group button:hover {
+			background-color: #0056b3;
+		}
+		.result {
+			margin-top: 20px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #f9f9f9;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Employee Salary Slip</h2>
+		<div class="form-group">
+			<label for="basicSalary">Basic Salary:</label>
+			<input type="number" id="basicSalary" placeholder="Enter basic salary">
+		</div>
+		<div class="form-group">
+			<button onclick="calculateNetSalary()">Calculate Net Salary</button>
+		</div>
+		<div class="result" id="result"></div>
+	</div>
+
+	<script>
+		function calculateNetSalary() {
+			const basicSalary = parseFloat(document.getElementById('basicSalary').value);
+			if (isNaN(basicSalary) || basicSalary <= 0) {
+				alert('Please enter a valid basic salary');
+				return;
+			}
+
+			const hra = basicSalary * 0.4;
+			const da = basicSalary * 0.2;
+			const ta = basicSalary * 0.1;
+			const pf = basicSalary * 0.12;
+			const tax = basicSalary * 0.1;
+			const netSalary = basicSalary + hra + da + ta - pf - tax;
+
+			document.getElementById('result').innerHTML = `
+				<p>Basic Salary: $${basicSalary.toFixed(2)}</p>
+				<p>HRA (40%): $${hra.toFixed(2)}</p>
+				<p>DA (20%): $${da.toFixed(2)}</p>
+				<p>TA (10%): $${ta.toFixed(2)}</p>
+				<p>PF (12%): $${pf.toFixed(2)}</p>
+				<p>Tax (10%): $${tax.toFixed(2)}</p>
+				<h3>Net Salary: $${netSalary.toFixed(2)}</h3>
+			`;
+		}
+	</script>
+</body>
+</html>

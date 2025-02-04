@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Eligibility Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .result p {
+      margin: 5px 0;
+    }
+
+    .approved {
+      color: green;
+    }
+
+    .denied {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Loan Eligibility Checker</h2>
+    <div class="input-group">
+      <label for="age">Enter your Age:</label>
+      <input type="number" id="age" placeholder="Enter your age" required>
+    </div>
+    <div class="input-group">
+      <label for="salary">Enter your Salary:</label>
+      <input type="number" id="salary" placeholder="Enter your salary" required>
+    </div>
+    <button onclick="checkLoanEligibility()">Check Eligibility</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function checkLoanEligibility() {
+      let age = parseInt(document.getElementById('age').value);
+      let salary = parseInt(document.getElementById('salary').value);
+      let resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';  // Clear previous result
+
+      if (isNaN(age) || isNaN(salary)) {
+        resultDiv.innerHTML = "<p class='denied'>Please enter valid numbers for age and salary.</p>";
+        return;
+      }
+
+      if (age >= 21) {
+        resultDiv.innerHTML = "<p class='approved'>You are eligible to apply for a loan.</p>";
+
+        if (age < 30) {
+          if (salary >= 30000) {
+            resultDiv.innerHTML += "<p class='approved'>Loan approved: Your salary meets the requirement for applicants under 30.</p>";
+          } else {
+            resultDiv.innerHTML += "<p class='denied'>Loan denied: Salary should be at least $30,000 for applicants under 30.</p>";
+          }
+        } else {
+          if (salary >= 25000) {
+            resultDiv.innerHTML += "<p class='approved'>Loan approved: Your salary meets the requirement for applicants 30 and above.</p>";
+          } else {
+            resultDiv.innerHTML += "<p class='denied'>Loan denied: Salary should be at least $25,000 for applicants aged 30 and above.</p>";
+          }
+        }
+      } else {
+        resultDiv.innerHTML = "<p class='denied'>Loan denied: You must be at least 21 years old to apply for a loan.</p>";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Education Qualifications</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
+		input, select {
+			margin-bottom: 15px;
+			padding: 8px;
+			width: 100%;
+			max-width: 300px;
+			box-sizing: border-box;
+		}
+		button {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #45a049;
+		}
+		#output {
+			margin-top: 20px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<label for="name">Enter your name:</label>
+	<input type="text" id="name" name="name"><br><br>
+
+	<label for="education">Choose your education qualification:</label>
+	<select id="education" name="education">
+		<option value="mcom">M.Com</option>
+		<option value="bcom">B.Com</option>
+		<option value="mca">MCA</option>
+		<option value="bca">BCA</option>
+		<option value="btech">B.Tech</option>
+		<option value="mtech">M.Tech</option>
+		<option value="mba">MBA</option>
+		<option value="phd">Ph.D</option>
+	</select>
+	<br><br>
+
+	<label for="experience">Enter your experience (in years):</label>
+	<input type="number" id="experience" name="experience"><br><br>
+
+	<label for="age">Enter your age:</label>
+	<input type="number" id="age" name="age"><br><br>
+
+	<button onclick="checkEligibility()">Check Eligibility</button>
+	<p id="output"></p>
+
+	<script>
+		function checkEligibility() {
+			const nameInput = document.getElementById('name');
+			const educationSelect = document.getElementById('education');
+			const experienceInput = document.getElementById('experience');
+			const ageInput = document.getElementById('age');
+			const output = document.getElementById('output');
+
+			const name = nameInput.value;
+			const education = educationSelect.value;
+			const experience = parseInt(experienceInput.value);
+			const age = parseInt(ageInput.value);
+
+			if ((education === 'mca' || education === 'mcom') && experience > 5 && age < 35) {
+				output.textContent = `${name} is eligible.`;
+			} else {
+				output.textContent = `${name} is not eligible.`;
+			}
+		}
+	</script>
+</body>
+</html>
