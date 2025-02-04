@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Checkbox and Radio Validation</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#myForm').on('submit', function(event) {
+				let isValid = true;
+
+				// Validate gender
+				if (!$('input[name="gender"]:checked').val()) {
+					isValid = false;
+					alert('Please select your gender.');
+				}
+
+				// Validate confirm checkbox
+				if (!$('#confirm').is(':checked')) {
+					isValid = false;
+					alert('Please confirm the submission.');
+				}
+
+				if (!isValid) {
+					event.preventDefault();
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<form id="myForm">
+		<h2>Gender</h2>
+		<input type="radio" id="male" name="gender" value="male">
+		<label for="male">Male</label><br>
+		<input type="radio" id="female" name="gender" value="female">
+		<label for="female">Female</label><br>
+		<input type="radio" id="other" name="gender" value="other">
+		<label for="other">Other</label><br><br>
+
+		<input type="checkbox" id="confirm" name="confirm">
+		<label for="confirm">I confirm the submission</label><br><br>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
